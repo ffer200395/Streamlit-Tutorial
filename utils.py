@@ -5,7 +5,7 @@ import tensorflow as tf
 
 def predict_flores(data):
     # Cargar el modelo previamente entrenado para predecir el tipo de flor
-    model = pickle.load(open('models/iris_model.pkl', "rb"))
+    model = pickle.load(open('Streamlit-Tutorial/models/iris_model.pkl', "rb"))
     # Realizar la predicción con los datos proporcionados
     predictions = model.predict(data) 
     return predictions
@@ -14,7 +14,7 @@ def predict_imagen(imagen):
     # Añadir una dimensión extra (lote)
     imagen = imagen.reshape((1, 32, 32, 3))
     # Cargar el modelo desde el archivo
-    model = load_model('models/modelo_cifar_10.h5')
+    model = load_model('Streamlit-Tutorial/models/modelo_cifar_10.h5')
     # Realizar la predicción
     predictions = model.predict(imagen)
     predicted_class = tf.argmax(predictions[0]).numpy()
