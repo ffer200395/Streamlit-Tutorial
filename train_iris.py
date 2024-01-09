@@ -11,5 +11,5 @@ y = iris['target']  # Etiquetas de las especies de flores
 log_reg = LogisticRegression().fit(X, y)
 
 # Guardar el modelo entrenado en un archivo 'iris_model.pkl'
-with open('iris_model.pkl', 'wb') as f:
+with open('models/iris_model.pkl', 'wb') as f:
     pickle.dump(log_reg, f)
