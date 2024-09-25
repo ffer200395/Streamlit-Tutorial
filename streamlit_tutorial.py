@@ -1,7 +1,8 @@
 import streamlit as st
-import pickle
+import joblib
 model_path = 'models/lasso_model.sav'
 from streamlit_extras.switch_page_button import switch_page
+import random
 
 def main():
     st.title('Bienvenido al portal de Seguros "Securitas"')
@@ -21,24 +22,26 @@ def main():
     fumador = st.selectbox('Do you smoke?: ',('Yes','No'))
     # Hijos
     hijos = st.slider('Choose your number of children: ', min_value=0, max_value=9)
+    # Calcular precio cuando se pulsa el botón
+    if st.button("Calculate Price"):
+        precio = random.randint(1000, 1500)
+        st.write(f"el precio de tu seguro es: {precio} Euros")
 
-    if st.button("Calculate Price"):"""
-        Quotation Date: {publish_date}
-        Age: {edad}
-        Gender: {sexo}
-        BMI: {bmi}
-        Smoker: {fumador}
-        N° of children: {hijos}
-        ."""
+
+    
+def load_model(model_path):
+    try:
+        model = joblib.load(model_path)  # cargar el modelo .sav 
+        return model
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
+
 #        with open(model_path, 'rb') as file:
-#            model = pickle.load(file)
+#          model = pickle.load(file)
 #        with st.spinner("Generando historia..."):
 #            response = get_text_response(text_model_pro, prompt, config)
 #            st.write(response)
-
-
-
-
 
 if __name__ == "__main__":
     main()
