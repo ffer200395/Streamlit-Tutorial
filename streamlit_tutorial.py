@@ -8,7 +8,7 @@ def main():
     st.title('Bienvenido al portal de Seguros "Securitas"')
     st.write('**Aquí se puede calcular el precio anual de prima que se pagará**')
     
-    # Nuevo: Añadir un selector de fecha
+    # Añadir un selector de fecha
     publish_date = st.date_input("Quotation Date")
     # Diccionario para almacenar los datos de entrada
     input_data = {}
